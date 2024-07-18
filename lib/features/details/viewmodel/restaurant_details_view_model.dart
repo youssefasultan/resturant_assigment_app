@@ -5,10 +5,8 @@ import 'package:resturant_assigment_app/features/details/data/restaurant_details
 class RestaurantDetailsViewModel extends ChangeNotifier {
   final RestaurantDetailsRepo _restaurantDetailsRepo;
   final RestaurantModel _resturantModel;
-  RestaurantDetailsViewModel(
-      this._restaurantDetailsRepo, this._resturantModel) {
-    getRestaurantPhotos(_resturantModel.fsqId);
-  }
+  
+  RestaurantDetailsViewModel(this._restaurantDetailsRepo, this._resturantModel);
 
   RestaurantModel get resturantModel => _resturantModel;
 

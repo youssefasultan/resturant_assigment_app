@@ -21,10 +21,12 @@ class MapPin extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(
-            name,
-            style: Theme.of(context).textTheme.labelMedium,
-            overflow: TextOverflow.ellipsis,
+          child: FittedBox(
+            child: Text(
+              name,
+              style: Theme.of(context).textTheme.labelMedium,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
         const SizedBox(height: 5),

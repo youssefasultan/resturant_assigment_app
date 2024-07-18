@@ -1,18 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:resturant_assigment_app/core/data/models/resturant_model.dart';
+import 'package:resturant_assigment_app/core/extention/context_ext.dart';
+import 'package:resturant_assigment_app/features/details/view/widgets/details_container.dart';
+import 'package:resturant_assigment_app/features/details/view/widgets/favorite_button.dart';
 import 'package:resturant_assigment_app/features/details/view/widgets/image_view.dart';
 import 'package:resturant_assigment_app/features/details/viewmodel/restaurant_details_view_model.dart';
 
-class ResturantDetailsScreen extends StatelessWidget {
-  const ResturantDetailsScreen({super.key});
+class ResturantDetailsScreen extends StatefulWidget {
+  const ResturantDetailsScreen({super.key, this.restaurant});
 
   static const routeName = '/resturant_details';
+  final RestaurantModel? restaurant;
+
+  @override
+  State<ResturantDetailsScreen> createState() => _ResturantDetailsScreenState();
+}
+
+class _ResturantDetailsScreenState extends State<ResturantDetailsScreen> {
+  var _isLoading = false;
+  var _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit && widget.restaurant == null) {
+      setState(() {
+        _isLoading = true;
+      });
+      final vm = context.restaurantDetailsViewModel;
+
+      vm.getRestaurantPhotos(vm.resturantModel.fsqId).then(
+        (value) {
+          setState(() {
+            _isLoading = false;
+          });
+        },
+      ).onError(
+        (error, stackTrace) {
+          context.showSnackBar('No Photos Found');
+          setState(() {
+            _isLoading = false;
+          });
+        },
+      );
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final data = context.watch<RestaurantDetailsViewModel>();
-    final resturant = data.resturantModel;
+    final resturant = widget.restaurant ??
+        context.watch<RestaurantDetailsViewModel>().resturantModel;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,47 +61,22 @@ class ResturantDetailsScreen extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              FontAwesomeIcons.heart,
-              color: Colors.red,
-            ),
-          )
+          FavoriteButton(restaurant: resturant),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ImageView(resturant: resturant),
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  Text(
-                    resturant.name,
-                    style: Theme.of(context).textTheme.headlineLarge,
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      const Icon(FontAwesomeIcons.addressBook),
-                      const SizedBox(width: 16),
-                      Text(
-                        resturant.address,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                ],
-              ),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Column(
+              children: [
+                if (resturant.photosUrl != null &&
+                    resturant.photosUrl!.isNotEmpty)
+                  ImageView(resturant: resturant),
+                const SizedBox(height: 16),
+                Expanded(
+                  child: DetailsContainer(resturant: resturant),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
     );
   }
 }
-
-

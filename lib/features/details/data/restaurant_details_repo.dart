@@ -8,7 +8,7 @@ class RestaurantDetailsRepo {
 
   Future<List<String>> getRestaurantPhotos(String id) async {
     try {
-      return await _restaurantRepository.getRestaurantPhoros(id);
+      return await _restaurantRepository.getRestaurantPhotos(id);
     } catch (error) {
       rethrow;
     }

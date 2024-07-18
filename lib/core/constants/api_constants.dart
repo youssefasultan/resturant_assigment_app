@@ -1,6 +1,7 @@
 class ApiConstanst {
-    ApiConstanst._();
+  ApiConstanst._();
 
-    static const String baseUrl = 'https://api.foursquare.com/v3';
-    static const String apiKey = 'fsq3siGI5Fkw4JZW0dnC9oggXi6uRNRmUQM3fZyKmuOWlXY=';
+  static const String baseUrl = 'https://api.foursquare.com/v3';
+  static const String apiKey =
+      'fsq3KPkGBEqfKbwLDi3peC8KKbadZUC0jJBijd9hePtHJr8=';
 }

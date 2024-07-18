@@ -29,16 +29,6 @@ class MapWidget extends StatelessWidget {
         ),
         MarkerLayer(
           markers: [
-            Marker(
-              point: LatLng(searchVM.currentLocation.latitude,
-                  searchVM.currentLocation.longitude),
-              width: 50,
-              height: 50,
-              child: const Icon(
-                FontAwesomeIcons.locationPin,
-                color: Colors.red,
-              ),
-            ),
             ...searchVM.getResturants.map(
               (e) => Marker(
                 point: LatLng(e.late, e.long),
@@ -49,14 +39,24 @@ class MapWidget extends StatelessWidget {
                     searchVM.setSelectedResturant(e);
 
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>const ResturantDetailsScreen()));
+                        builder: (context) => const ResturantDetailsScreen()));
                   },
                   child: MapPin(
                     name: e.name,
                   ),
                 ),
               ),
-            )
+            ),
+            Marker(
+              point: LatLng(searchVM.currentLocation.latitude,
+                  searchVM.currentLocation.longitude),
+              width: 50,
+              height: 50,
+              child: const Icon(
+                FontAwesomeIcons.locationPin,
+                color: Colors.red,
+              ),
+            ),
           ],
         )
       ],

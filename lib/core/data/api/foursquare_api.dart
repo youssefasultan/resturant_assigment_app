@@ -22,7 +22,7 @@ class FoursquareApi {
 
       return jsonData
           .map(
-            (e) => '${e['prefix']}/600x400/${e['suffix']}',
+            (e) => '${e['prefix']}600x400${e['suffix']}',
           )
           .toList();
     } catch (e) {
