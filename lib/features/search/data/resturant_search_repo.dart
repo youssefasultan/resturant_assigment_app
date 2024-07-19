@@ -6,6 +6,7 @@ class RestaurantSearchRepo {
 
   RestaurantSearchRepo(this._restaurantRepository);
 
+  /// Fetches nearby restaurants based on latitude and longitude, using RestaurantRepository.
   Future<List<RestaurantModel>> getNearbyRestaurants({
     required double latitude,
     required double longitude,

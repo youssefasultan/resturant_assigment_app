@@ -5,7 +5,7 @@ class RestaurantDetailsRepo {
 
   RestaurantDetailsRepo(this._restaurantRepository);
 
-
+  /// fetching images for selected restaurant from resturant repo
   Future<List<String>> getRestaurantPhotos(String id) async {
     try {
       return await _restaurantRepository.getRestaurantPhotos(id);

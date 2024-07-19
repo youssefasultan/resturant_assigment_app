@@ -6,6 +6,8 @@ class FavoritesRepo {
 
   FavoritesRepo(this._restaurantRepository);
 
+
+  /// get Favorite restrants from resturant repo
   Future<List<RestaurantModel>> getFavorites() async {
     try {
       final favorites = await _restaurantRepository.fetchAllFavorites();
@@ -16,7 +18,7 @@ class FavoritesRepo {
   }
 
 
-
+  /// update favorites in resturant repo
   Future<void> updateFavorites(List<RestaurantModel> restaurants) async {
     try {
       await _restaurantRepository.updateFavorites(restaurants);

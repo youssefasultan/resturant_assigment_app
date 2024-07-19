@@ -19,7 +19,7 @@ class RestaurantModel {
   factory RestaurantModel.fromJson(Map<String, dynamic> json) {
     return RestaurantModel(
       fsqId: json['fsq_id'],
-      address: json['location']['formatted_address'],
+      address: json['location']['address'],
       name: json['name'],
       long: json['geocodes']['main']['longitude'],
       late: json['geocodes']['main']['latitude'],

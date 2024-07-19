@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:resturant_assigment_app/core/data/models/resturant_model.dart';
 import 'package:resturant_assigment_app/features/favorites/viewmodel/favorites_view_model.dart';
@@ -15,11 +14,15 @@ class FavoriteButton extends StatelessWidget {
 
     return IconButton(
       onPressed: () {
+        // toogling the favorite
         favoritesVM.toggleFavorite(restaurant);
       },
-      icon: Icon(
-        isFavorite ? FontAwesomeIcons.solidStar : FontAwesomeIcons.star,
-        color: Colors.yellowAccent,
+      icon: Image.asset(
+        isFavorite ? 'assets/icons/fav_2.png' : 'assets/icons/fav_1.png',
+        fit: BoxFit.contain,
+        color: Colors.white,
+        width: 30,
+        height: 30,
       ),
     );
   }

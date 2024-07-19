@@ -5,6 +5,8 @@ import 'package:resturant_assigment_app/core/constants/api_constants.dart';
 import 'package:resturant_assigment_app/core/data/models/response.dart';
 
 class FoursquareApi {
+
+  /// fetching images for selected restaurant from api
   Future<List<String>> getRestaurantPhotos(String id) async {
     try {
       final url = Uri.parse('${ApiConstanst.baseUrl}/places/$id/photos');
@@ -30,6 +32,7 @@ class FoursquareApi {
     }
   }
 
+  /// fetching nearby resturants using latitude and longitude from api
   Future<FoursquareResponse> getNearbyRestaurants(
       {required double latitude,
       required double longitude,

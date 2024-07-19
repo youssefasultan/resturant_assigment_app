@@ -54,24 +54,32 @@ class _ResturantDetailsScreenState extends State<ResturantDetailsScreen> {
         context.watch<RestaurantDetailsViewModel>().resturantModel;
 
     return Scaffold(
+      backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text(
           resturant.name,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: Colors.white),
         ),
         centerTitle: true,
         actions: [
           FavoriteButton(restaurant: resturant),
         ],
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
+                // show images if any
                 if (resturant.photosUrl != null &&
                     resturant.photosUrl!.isNotEmpty)
                   ImageView(resturant: resturant),
                 const SizedBox(height: 16),
+                // restaurant details
                 Expanded(
                   child: DetailsContainer(resturant: resturant),
                 ),

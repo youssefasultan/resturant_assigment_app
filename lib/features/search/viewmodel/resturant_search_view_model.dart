@@ -31,6 +31,8 @@ class RestaurantSearchViewModel extends ChangeNotifier {
     return _currentLocation!;
   }
 
+
+  /// getting user current location
   Future<void> fetchUserLocation() async {
     try {
       Position position = await _locationService.getCurrentLocation();
@@ -42,6 +44,7 @@ class RestaurantSearchViewModel extends ChangeNotifier {
     }
   }
 
+  /// getting nearby resturants
   Future<void> fetchNearByResturants() async {
     try {
       if (_currentLocation == null) {
@@ -60,6 +63,8 @@ class RestaurantSearchViewModel extends ChangeNotifier {
     }
   }
 
+
+  /// set selected resturant for details screen
   void setSelectedResturant(RestaurantModel e) {
     _selectedResturant = e;
     notifyListeners();

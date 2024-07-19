@@ -31,6 +31,7 @@ class RestaurantRepo {
     }
   }
 
+  /// fetching images for selected restaurant from api
   Future<List<String>> getRestaurantPhotos(String id) async {
     try {
       return await _foursquareApi.getRestaurantPhotos(id);
@@ -41,6 +42,8 @@ class RestaurantRepo {
 
   // local data-source
 
+
+  /// fetching images for selected restaurant from local storage
   Future<List<RestaurantModel>> fetchAllFavorites() async {
     try {
       return await _localStorage.fetchAllFavorites();
@@ -49,7 +52,7 @@ class RestaurantRepo {
     }
   }
 
-
+  /// update favorites  in local storage
   Future<void> updateFavorites(List<RestaurantModel> restaurants) async {
     try {
       await _localStorage.updateFavorites(restaurants);

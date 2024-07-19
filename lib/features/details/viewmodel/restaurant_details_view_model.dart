@@ -10,6 +10,7 @@ class RestaurantDetailsViewModel extends ChangeNotifier {
 
   RestaurantModel get resturantModel => _resturantModel;
 
+  /// fetching images for selected restaurant
   Future<void> getRestaurantPhotos(String id) async {
     try {
       final photos = await _restaurantDetailsRepo.getRestaurantPhotos(id);

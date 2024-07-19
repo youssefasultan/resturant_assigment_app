@@ -11,6 +11,8 @@ class LocalStorage {
     ),
   );
 
+
+  /// fetching images for selected restaurant from local storage
   Future<List<RestaurantModel>> fetchAllFavorites() async {
     try {
       final response = await storage.read(key: StrorageConstants.favoritesKey);
@@ -27,6 +29,8 @@ class LocalStorage {
     }
   }
 
+
+  /// update favorites  in local storage
   Future<void> updateFavorites(List<RestaurantModel> restaurants) async {
     try {
       await storage.write(

@@ -16,9 +16,8 @@ class CategoryContainter extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.blue,
-        border: Border.all(),
       ),
-      child: Text(name),
+      child: Text(name, style: const TextStyle(color: Colors.white)),
     );
   }
 }

@@ -12,12 +12,15 @@ class FavoritesViewModel extends ChangeNotifier {
 
   RestaurantModel? _selectedResturant;
   RestaurantModel? get selectedResturant => _selectedResturant;
+  
 
+  /// set selected resturant for details screen
   void setSelectedResturant(RestaurantModel e) {
     _selectedResturant = e;
     notifyListeners();
   }
 
+  /// update favorites
   Future<void> updateFavorites() async {
     try {
       await _favoritesRepo.updateFavorites(_restaurants);
@@ -26,6 +29,8 @@ class FavoritesViewModel extends ChangeNotifier {
     }
   }
 
+
+  /// get Favorite restrants
   Future<void> getFavorites() async {
     try {
       final favorites = await _favoritesRepo.getFavorites();
@@ -36,22 +41,27 @@ class FavoritesViewModel extends ChangeNotifier {
     }
   }
 
+  /// add resturant to favorites
   void addFavorite(RestaurantModel restaurant) {
     _restaurants.add(restaurant);
     updateFavorites();
     notifyListeners();
   }
 
+
+  /// remove resturant from favorites
   void removeFavorite(RestaurantModel restaurant) {
     _restaurants.remove(restaurant);
     updateFavorites();
     notifyListeners();
   }
 
+  /// check if resturant found in favorites
   bool isFavorite(String fsqId) {
     return _restaurants.any((element) => element.fsqId == fsqId);
   }
 
+  /// toggle the favorite resturant
   void toggleFavorite(RestaurantModel resturant) {
     if (isFavorite(resturant.fsqId)) {
       removeFavorite(_restaurants
