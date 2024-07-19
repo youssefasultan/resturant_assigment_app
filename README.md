@@ -5,8 +5,10 @@ A Flutter application that displays nearby restaurants.
 List the key features and functionalities of your project:
 - fetching nearby restaurants and displaying them on the map.
 <img src="assets/screenshots/home.jpg" width=30% height=30%>
+
 - viewing details for each restaurant.
 <img src="assets/screenshots/details.jpg" width=30% height=30%>
+
 - the ability to favorite the restaurant and save it in secure storage.
 <img src="assets/screenshots/fav.jpg" width=30% height=30%>
 
