@@ -4,8 +4,11 @@ A Flutter application that displays nearby restaurants.
 
 List the key features and functionalities of your project:
 - fetching nearby resturants and displaying them on map.
+![Alt text](assets/screenshots/home-portrait.png)
 - viewing details for each restaurant.
+![Alt text](assets/screenshots/details-portrait.png)
 - ability to favorite the restaurant and save in a secure storage.
+![Alt text](assets/screenshots/fav-portrait.png)
 
 
 ## Packages Used
@@ -51,5 +54,14 @@ List the key features and functionalities of your project:
     │       └── view_model
     ├── app.dart
     └── main.dart
+
+
+#### Setup Instructions
+1. Clone the repository.
+2. Open the terminal and navigate to the project directory.
+3. Run `flutter pub get` to install the dependencies.
+4. Run `flutter devices` to check if your device is connected.
+5. Run `flutter run` to start the application.
+
 
 

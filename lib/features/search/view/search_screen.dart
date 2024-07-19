@@ -50,7 +50,12 @@ class _SearchScreenState extends State<SearchScreen> {
             },
           );
         },
-      );
+      ).onError((error, stack) {
+        context.showSnackBar('Error Fetching current location');
+        setState(() {
+          _isLoading = false;
+        });
+      });
     }
     _isInit = false;
     super.didChangeDependencies();
